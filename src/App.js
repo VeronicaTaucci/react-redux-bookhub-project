@@ -10,7 +10,7 @@ function App() {
   const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
   return (
     <>
-      App component
+      App component here
     </>
   );
 }
