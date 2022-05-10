@@ -5,8 +5,9 @@ const Header = () => {
     return (
         <>
             <ul>
-                <li> <Link to="/">Home</Link></li>
-                <li> <Link to="/components/allbooks">All Books</Link></li>
+                <li> <Link to="/">search a book</Link></li>
+                <li> <Link to="/components/allbooks">All the Books I want to read</Link></li>
+                <li> <Link to="/components/allbooks">All the Books I read already</Link></li>
 
             </ul>
         </>
