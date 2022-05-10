@@ -21,3 +21,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+.env
+
+//https://www.googleapis.com/books/v1/volumes?q=${searchInput}&key=${API_KEY}
