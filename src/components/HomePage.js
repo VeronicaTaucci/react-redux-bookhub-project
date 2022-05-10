@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-
+import InfoModal from './InfoModal';
 import { addToList } from '../actions/addToList'
 import AllBooks from './AllBooks';
 const API_KEY = process.env.REACT_APP_BOOK_API_KEY;
@@ -11,8 +10,6 @@ const Home = () => {
     const [searchedBooks, setSearchedBooks] = useState([]);
     const [searchInput, setSearchInput] = useState('');
     const dispatch = useDispatch();
-
-
     const searchResults = e => {
         setSearchInput(e.target.value);
 }
@@ -31,6 +28,7 @@ const handleInput = async () => {
     // setData(data.Search);   //sets our state- replaces the empty array with our data
     setSearchedBooks(data.items);
 }
+    
 
 return (
     <>
@@ -42,9 +40,12 @@ return (
                 <div key={book.id} >
                     <img src={book.volumeInfo.imageLinks.thumbnail} />
                     <div>{book.volumeInfo.title}</div>
-                    <button  onClick={() => dispatch(addToList(book)) }>Add To List</button>
+                    <button onClick={() => dispatch(addToList(book))}>Add To List</button>
+                    <InfoModal book={book}><button>Add To List</button></InfoModal> 
                 </div>
+                
             ))}
+            
         </div>
     </>
 )

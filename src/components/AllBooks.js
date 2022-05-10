@@ -14,9 +14,12 @@ console.log('all books', bookList)
             Display Books
             <ul>
                 {bookList.map((book) => {
-                    console.log(book)
-                    return <img src={book.volumeInfo.imageLinks.thumbnail}key={book.id}/>
-                }
+                    return(
+                    <div>
+                    <img src={book.volumeInfo.imageLinks.thumbnail} key={book.id} />
+                        <p>{book.volumeInfo.title}</p>
+                    </div>)
+                    }
                 )}
             </ul>
             <h1>{counter}</h1>
