@@ -24,7 +24,6 @@ const handleInput = async () => {
     }); 
 
     let data = await results.json();
-    console.log('data', data);
     // setData(data.Search);   //sets our state- replaces the empty array with our data
     setSearchedBooks(data.items);
 }

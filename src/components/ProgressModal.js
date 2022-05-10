@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { addToList } from '../actions/addToList';
-const InfoModal = (book) => {
+import { addToReadList } from '../actions/bookRead';
+const ProgressModal = (book) => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -27,11 +27,11 @@ const InfoModal = (book) => {
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <button onClick={() => dispatch(addToList(bookArr))}>Add To List</button>
+                    <button onClick={() => dispatch(addToReadList(bookArr))}>Add To List</button>
                 </Modal.Footer>
             </Modal>
         </>
     );
 }
 
-export default InfoModal
+export default ProgressModal
