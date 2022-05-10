@@ -3,7 +3,9 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
+import BaseLayout from './components/layout/BaseLayout';
 import Home from './components/HomePage';
+import AllBooks from './components/AllBooks';
 
 import rootReducer from './reducers/index.js'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -16,9 +18,12 @@ const App = () => {
   return (
     <Provider store={store}>
       <Router>
-          <Routes>
-            <Route path="/" element={<Home />} />
+          <BaseLayout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+            <Route path="components/allbooks" element={<AllBooks />} />
           </Routes>
+          </BaseLayout>
       </Router>
     </Provider>
   )

@@ -1,3 +1,4 @@
+import {ADD_TO_LIST} from '../actions/types'
 const booksReducer = (state, action) => {
 
     //initialize our state 
@@ -9,7 +10,14 @@ const booksReducer = (state, action) => {
         }
     }
     switch (action.type) {
-    
+        case ADD_TO_LIST:
+            console.log(action.data.book)
+            let newBookItems = [...state.bookList,action.data.book] //copying whatever is in state )
+            return {
+                ...state,
+                bookList: newBookItems,
+                numberOfItems: state.numberOfItems + 1
+            }
         default:
             return state
     }

@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
+import { addToList } from '../actions/addToList'
+import AllBooks from './AllBooks';
 const API_KEY = process.env.REACT_APP_BOOK_API_KEY;
 
 const Home = () => {
@@ -39,7 +42,7 @@ return (
                 <div key={book.id} >
                     <img src={book.volumeInfo.imageLinks.thumbnail} />
                     <div>{book.volumeInfo.title}</div>
-                    
+                    <button  onClick={() => dispatch(addToList(book)) }>Add To List</button>
                 </div>
             ))}
         </div>
