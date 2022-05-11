@@ -27,7 +27,7 @@ const InfoModal = (book) => {
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <button onClick={() => dispatch(addToList(bookArr))}>Add To List</button>
+                    <Button variant="secondary" onClick={() => dispatch(addToList(bookArr))}>Add To List</Button>
                 </Modal.Footer>
             </Modal>
         </>

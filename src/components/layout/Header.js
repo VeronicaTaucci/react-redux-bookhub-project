@@ -7,7 +7,7 @@ const Header = () => {
             <ul>
                 <li> <Link to="/">search a book</Link></li>
                 <li> <Link to="/components/allbooks">All the Books I want to read</Link></li>
-                <li> <Link to="/components/allbooks">All the Books I read already</Link></li>
+                <li> <Link to="/components/booksiread">All the Books I read already</Link></li>
 
             </ul>
         </>
