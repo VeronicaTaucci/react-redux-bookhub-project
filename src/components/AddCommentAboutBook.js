@@ -4,8 +4,11 @@ import { addCommentAboutBook } from "../actions/addCommentAboutBook";
 import { categories } from "../constants/add-comments"
 import { ToastContainer, toast } from 'react-toastify';
 
+import { v4 as uuidv4 } from 'uuid';
+
 import 'react-toastify/dist/ReactToastify.css';
 import './addCommentAboutBook.css'
+import CommentsDisplay from "./CommentsDisplay";
 const AddCommentForm = () => { 
     const categoriesArr = categories;
     const [categoryOpen, setCategoryOpen] = useState(false)
@@ -36,7 +39,8 @@ const AddCommentForm = () => {
             comment:
             quote,
             category:category.title,
-            createdAt : new Date()
+            createdAt: new Date(),
+            id: uuidv4()
         }
         dispatch(addCommentAboutBook(data))
         const addData = () => toast("Great");
@@ -69,7 +73,7 @@ const AddCommentForm = () => {
                     onChange={(e) => handleQuote(e)}
                     value={quote}
                 />
-            </div>
+                </div>
             <div className="category-container-parent">
                 <div className="category">
                     <div
@@ -97,7 +101,8 @@ const AddCommentForm = () => {
             </div>
             <div className="comment-add-button">
                 <div onClick={handleSubmit}>
-                <label>Add</label>
+                        <label>Add</label>
+                        <CommentsDisplay/>
             </div>
             </div>
                 <div />

@@ -4,7 +4,6 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { addToReadList } from '../actions/bookRead';
 import Rating from './Rating';
-import ProgressBoard from './ProgressBoard';
 import AddCommentForm from './AddCommentAboutBook';
 const ProgressModal = (book) => {
     const [show, setShow] = useState(false);

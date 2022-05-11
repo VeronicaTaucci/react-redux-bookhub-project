@@ -3,8 +3,8 @@ import { useDispatch } from 'react-redux';
 import InfoModal from './InfoModal';
 import { addToList } from '../actions/addToList'
 import AllBooks from './AllBooks';
+import './styling/homePage.css' 
 const API_KEY = process.env.REACT_APP_BOOK_API_KEY;
-
 const Home = () => {
 
     const [searchedBooks, setSearchedBooks] = useState([]);
@@ -31,21 +31,24 @@ const handleInput = async () => {
 
 return (
     <>
-        <input className="col-4 mb-5 p-1" onChange={searchResults} />
-        <button  onClick={handleInput}>Search</button>
-
-        <div >
+        <div className="wrap">
+            <div className="search">
+                <input onChange={searchResults} type="text" className="searchTerm" placeholder="Search a book"/>
+                <button onClick={handleInput} type="submit" className="searchButton">
+                        <i className="fa fa-search"></i>
+                    </button>
+            </div>
+        </div>
+        <div className='searchResults'>
             {searchedBooks.map(book => (
-                <div key={book.id} >
+                <div key={book.id} className="bookContainer">
                     <img src={book.volumeInfo.imageLinks.thumbnail} />
                     <div>{book.volumeInfo.title}</div>
                     <button onClick={() => dispatch(addToList(book))}>Add To List</button>
                     <InfoModal book={book}><button>Add To List</button></InfoModal> 
                 </div>
-                
             ))}
-            
-        </div>
+         </div> 
     </>
 )
 }
