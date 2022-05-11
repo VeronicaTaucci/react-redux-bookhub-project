@@ -3,6 +3,9 @@ import { useDispatch } from 'react-redux';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { addToReadList } from '../actions/bookRead';
+import Rating from './Rating';
+import ProgressBoard from './ProgressBoard';
+import AddCommentForm from './AddCommentAboutBook';
 const ProgressModal = (book) => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -11,25 +14,24 @@ const ProgressModal = (book) => {
     const bookArr = book.book;
     return (
         <>
+            <Modal.Body>
             <Button variant="primary" onClick={handleShow}>
-                Launch demo modal
+                records about the book
             </Button>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>{bookArr.volumeInfo.title}</Modal.Title>
+                    <Modal.Title>{bookArr.volumeInfo.title}</Modal.Title><br/>
                 </Modal.Header>
-                <Modal.Body>{bookArr.volumeInfo.description}</Modal.Body>
-                <span>Average rating: {bookArr.volumeInfo.averageRating}</span>
-                <span>Language: {bookArr.volumeInfo.language}</span>
-                <span>Published: {bookArr.volumeInfo.publishedDate}</span>
-                <span>{bookArr.volumeInfo.averageRating}</span>
+                <Rating /><span> Pages: <input type='range' /></span>
+                    <AddCommentForm />
                 <Modal.Footer>
+                    <Button variant="secondary" onClick={() => dispatch(addToReadList(bookArr))}>Add To books I already read</Button>
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <button onClick={() => dispatch(addToReadList(bookArr))}>Add To List</button>
                 </Modal.Footer>
-            </Modal>
+                </Modal>
+            </Modal.Body>
         </>
     );
 }

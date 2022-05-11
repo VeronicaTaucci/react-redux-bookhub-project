@@ -6,6 +6,7 @@ import { Provider } from 'react-redux'
 import BaseLayout from './components/layout/BaseLayout';
 import Home from './components/HomePage';
 import AllBooks from './components/AllBooks';
+import BooksIRead from './components/BooksIRead';
 
 import rootReducer from './reducers/index.js'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -22,6 +23,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
             <Route path="components/allbooks" element={<AllBooks />} />
+            <Route path="components/booksiread" element={<BooksIRead />} />
           </Routes>
           </BaseLayout>
       </Router>
