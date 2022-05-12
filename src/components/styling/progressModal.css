@@ -1,0 +1,11 @@
+.modal-content{
+  background-color: rosybrown;
+  display: flex;
+width: 50vw;
+height: 30vw;
+}
+.modal-body {
+    display: flex;
+    flex-direction: column;
+}
+

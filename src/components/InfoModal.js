@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import { useDispatch } from 'react-redux';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -11,8 +11,8 @@ const InfoModal = (book) => {
     const bookArr = book.book;
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>
-                Launch demo modal
+            <Button variant="outline-dark" onClick={handleShow}>
+               See Details
             </Button>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
@@ -24,10 +24,10 @@ const InfoModal = (book) => {
                 <span>Published: {bookArr.volumeInfo.publishedDate}</span>
                 <span>{bookArr.volumeInfo.averageRating}</span>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
+                    <Button variant="outline-dark" onClick={() => dispatch(addToList(bookArr))}>Add To List</Button>
+                    <Button variant="outline-dark" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="secondary" onClick={() => dispatch(addToList(bookArr))}>Add To List</Button>
                 </Modal.Footer>
             </Modal>
         </>
