@@ -3,7 +3,11 @@ import { useDispatch } from "react-redux";
 import { addCommentAboutBook } from "../actions/addCommentAboutBook";
 import { categories } from "../constants/add-comments"
 import { ToastContainer, toast } from 'react-toastify';
+
+import ListGroup from 'react-bootstrap/ListGroup';
+import Button from 'react-bootstrap/Button';
 import { v4 as uuiv4 } from 'uuid';
+import './styling/addCommentAboutBook.css'
 
 import 'react-toastify/dist/ReactToastify.css';
 const AddCommentForm = () => {
@@ -63,7 +67,15 @@ const AddCommentForm = () => {
                         onChange={(e) => handleComment(e)}
                     />
                 </div>
-                <div className="form-item">
+                {/* <ListGroup>
+                    <ListGroup.Item><input
+                        placeholder="something"
+                        value={comment}
+                        onChange={(e) => handleComment(e)}/> </ListGroup.Item>
+                    <ListGroup.Item> <AddCommentForm /></ListGroup.Item>
+                </ListGroup> */}
+
+                {/* <div className="form-item">
                     <label>Quote</label>
                     <input
                         placeholder="Enter Quote"
@@ -71,7 +83,7 @@ const AddCommentForm = () => {
                         onChange={(e) => handleQuote(e)}
                         value={quote}
                     />
-                </div>
+                </div> */}
                 <div className="category-container-parent">
                     <div className="category">
                         <div

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux';
+import Header from './layout/Header';
 import InfoModal from './InfoModal';
 import { addToList } from '../actions/addToList'
 import './styling/homePage.css';
@@ -22,7 +23,7 @@ const Home = () => {
 }
 
     const handleInput = async () => {
-    let url = `https://www.googleapis.com/books/v1/volumes?q=${searchInput}`
+        let url = `https://www.googleapis.com/books/v1/volumes?q=${searchInput}&maxResults=21`
     let results = await fetch(url, {
         headers: {
             Authorization: API_KEY
@@ -46,7 +47,7 @@ const Home = () => {
 return (
     <>
         <div className='heroDiv'>
-            <h1>Quote of the day: {randomQuote}</h1>
+            <h1 className='quote'> {randomQuote}</h1>
             <div className="search">
                 <input onChange={searchResults} type="text" className="searchTerm" placeholder="Search a book" />
                 <button onClick={handleInput} type="submit" className="searchButton">
@@ -55,7 +56,7 @@ return (
             </div>
         </div>
        
-        
+        <Header/>
         <div className='searchResults'>
             {searchedBooks.map((book) => (
             <Card key={book.id} style={{ width: '15rem' }} className='bookContainer'>

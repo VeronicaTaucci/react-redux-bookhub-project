@@ -6,7 +6,7 @@
 
 .category {
     position: relative;
-    width: 40%;
+    width: 20%;
 }
 
 .category-dropdown {
@@ -32,15 +32,13 @@
     background: #ffffff;
 }
 
-.category-item {
-    width: 98%;
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 0px;
-    cursor: pointer;
-}
+
 
 .category-item img {
     height: 32px;
     margin-right: 20px;
+}
+.listGroup{
+    display: flex;
+    justify-content: space-between;
 }

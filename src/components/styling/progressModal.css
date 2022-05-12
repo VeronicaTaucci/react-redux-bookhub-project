@@ -1,11 +1,12 @@
-.modal-content{
-  background-color: rosybrown;
+.modal-content {
+  background-color: rgb(242, 236, 236);
+  font-size: large;
   display: flex;
-width: 50vw;
-height: 30vw;
-}
-.modal-body {
-    display: flex;
-    flex-direction: column;
+  width: 50vw;
+  height: 30vw;
 }
 
+.modal-body {
+  display: flex;
+  flex-direction: column;
+}

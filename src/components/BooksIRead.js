@@ -5,9 +5,11 @@ import { addToReadList } from '../actions/bookRead'
 import ProgressModal from './ProgressModal'
 import { useDispatch } from 'react-redux';
 import SearchBookList from './SearchBookList';
-
+import Header from './layout/Header'
 import './styling/homePage.css';
 
+import { deleteBookIRead } from '../actions/deleteBookIRead'
+import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 const AllBooks = () => {
     const dispatch = useDispatch()
@@ -15,6 +17,7 @@ const AllBooks = () => {
 
     return (
         <>
+            <Header/>
             {/* <SearchBookList/>
             Display Books I Read Already
             <ul>
@@ -37,8 +40,8 @@ const AllBooks = () => {
                             <Card.Title>{book.volumeInfo.title}</Card.Title>
                             <div className='infoButtons'>
                                 <ProgressModal book={book}></ProgressModal>
-                                {/* <Button variant="outline-dark" onClick={() => dispatch(addToReadList(book))}>Add To Books I've Read</Button>
-                                <Button variant="outline-dark" onClick={() => dispatch(deleteBook(book))}>Delete</Button> */}
+                                <Button variant="outline-dark" onClick={() => dispatch(deleteBookIRead(book))}>Delete</Button>
+
                             </div>
                         </Card>)
                 }

@@ -1,3 +1,5 @@
+
+
 .heroDiv{
     width: 100%;
     background-image: url('/Users/veronica.t/Desktop/react_project/book_hub/public/images/heroImg.avif');
@@ -9,20 +11,28 @@
     justify-content: center;
     align-items: center;
 }
+.quote{
+    margin: auto;
+        color: black;
+        font-family: 'Fira Code', monospace;
+        font-size: 35px;
+        text-decoration: none;
+}
 .search {
     display: flex;
 }
 
 .searchTerm {
     
-    width: 100%;
-    border: 3px solid #00B4CC;
+    width: 600px;
+    border: 3px solid #051b1e;
     border-right: none;
     padding: 5px;
     height: 45px;
     border-radius: 5px 0 0 5px;
     outline: none;
     color: #9DBFAF;
+    margin-bottom: 40px;
 }
 
 .searchTerm:focus {
@@ -32,8 +42,8 @@
 .searchButton {
     width: 40px;
     height: 45px;
-    border: 1px solid #00B4CC;
-    background: #00B4CC;
+    border: 1px solid #2c383a;
+    background: #101c1e;
     text-align: center;
     color: #fff;
     border-radius: 0 5px 5px 0;
@@ -56,6 +66,7 @@
     width: 80%;
     justify-content: center;
     flex-wrap: wrap;
+
 }
 .bookContainer {
     padding: 10px;
