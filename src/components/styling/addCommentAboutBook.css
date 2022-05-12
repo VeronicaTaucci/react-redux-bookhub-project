@@ -17,14 +17,18 @@
     background-color: white;
     border-radius: 6px;
     padding: 4px;
+    border: 2px solid black;
 }
 
 .category-dropdown i {
     display: flex;
     align-items: center;
+border: 2px solid black;
+    
 }
 
 .category-container {
+    border: 2px solid black;
     display: flex;
     position: absolute;
     width: 100%;
@@ -34,11 +38,20 @@
 
 
 
-.category-item img {
-    height: 32px;
+.categoryItem{
     margin-right: 20px;
+    border: 2px solid black;
+}
+.categoryItem:hover{
+background-color: rgb(174, 169, 169);
 }
 .listGroup{
     display: flex;
     justify-content: space-between;
 }
+
+.comment{
+    width: 500px;
+    height: 200px;
+}
+

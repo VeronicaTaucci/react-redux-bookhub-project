@@ -50,8 +50,8 @@ const ProgressModal = (book) => {
                         
                     </Modal.Header>
                     
-                    <ListGroup>
-                        <ListGroup.Item>Pages read: {count}<Button variant="outline-dark" onClick={() => setCount(count + 1)}>ADD</Button></ListGroup.Item>
+                    <ListGroup className='listGroup'>
+                        <ListGroup.Item>Pages read: {count}<Button className="count" variant="outline-dark" onClick={() => setCount(count + 1)}>ADD</Button></ListGroup.Item>
                         <ListGroup.Item> <AddCommentForm /></ListGroup.Item>
                     </ListGroup>
 

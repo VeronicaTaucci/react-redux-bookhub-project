@@ -12,7 +12,7 @@ const CommentsDisplay = () => {
     console.log("commentsDisplay component", comments)
     const dispatch = useDispatch();
 
-    
+    // state.bookList.filter((comment) => comment.id !== action.data.comment.id);
     
     return (
         <> 

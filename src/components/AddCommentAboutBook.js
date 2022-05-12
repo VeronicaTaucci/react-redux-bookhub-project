@@ -43,9 +43,8 @@ const AddCommentForm = () => {
             createdAt: new Date(),
             id: uuiv4()
         }
-        console.log('addBooks,ln 40',data)
         dispatch(addCommentAboutBook(data))
-        const addData = () => toast("Great");
+        const addData = () => toast("Succes");
         addData();
     }
 
@@ -60,9 +59,8 @@ const AddCommentForm = () => {
                     closeOnClick
                 />
                 <div className="form-item">
-                    <label>Comment</label>
-                    <input
-                        placeholder="something"
+                    <input className="comment"
+                        placeholder="add a thought"
                         value={comment}
                         onChange={(e) => handleComment(e)}
                     />
@@ -96,7 +94,7 @@ const AddCommentForm = () => {
                         {categoryOpen && (
                             <div >
                                 {categoriesArr.map((category) => (
-                                    <div
+                                    <div className="categoryItem"
                                         key={category.id}
                                         onClick={() => handleCategory(category)}
                                     >
@@ -109,7 +107,7 @@ const AddCommentForm = () => {
                 </div>
                 <div className="comment-add-button">
                     <div >
-                        <button onClick={handleSubmit}>Add</button>
+                        <Button variant="outline-dark" onClick={handleSubmit}>Add</Button>
                     </div>
                 </div>
                 <div />

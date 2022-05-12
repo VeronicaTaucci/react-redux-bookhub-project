@@ -47,7 +47,7 @@ const Home = () => {
 return (
     <>
         <div className='heroDiv'>
-            <h1 className='quote'> {randomQuote}</h1>
+            <h1 className='quote'> "{randomQuote}"</h1>
             <div className="search">
                 <input onChange={searchResults} type="text" className="searchTerm" placeholder="Search a book" />
                 <button onClick={handleInput} type="submit" className="searchButton">
