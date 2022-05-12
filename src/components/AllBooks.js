@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import './styling/homePage.css';
 import Button from 'react-bootstrap/Button';
 
+import Header from './layout/Header';
 import Card from 'react-bootstrap/Card';
 const AllBooks = () => {
     const dispatch = useDispatch()
@@ -31,7 +32,7 @@ const AllBooks = () => {
                     }
                 )}
             </ul> */}
-
+            <Header/>
             <div className='searchResults'>
                 {bookList.map((book) => (
                     <Card key={book.id} style={{ width: '15rem' }} className='bookContainer'>

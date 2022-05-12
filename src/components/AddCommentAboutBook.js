@@ -3,7 +3,11 @@ import { useDispatch } from "react-redux";
 import { addCommentAboutBook } from "../actions/addCommentAboutBook";
 import { categories } from "../constants/add-comments"
 import { ToastContainer, toast } from 'react-toastify';
+
+import ListGroup from 'react-bootstrap/ListGroup';
+import Button from 'react-bootstrap/Button';
 import { v4 as uuiv4 } from 'uuid';
+import './styling/addCommentAboutBook.css'
 
 import 'react-toastify/dist/ReactToastify.css';
 const AddCommentForm = () => {
@@ -39,9 +43,8 @@ const AddCommentForm = () => {
             createdAt: new Date(),
             id: uuiv4()
         }
-        console.log('addBooks,ln 40',data)
         dispatch(addCommentAboutBook(data))
-        const addData = () => toast("Great");
+        const addData = () => toast("Succes");
         addData();
     }
 
@@ -56,14 +59,21 @@ const AddCommentForm = () => {
                     closeOnClick
                 />
                 <div className="form-item">
-                    <label>Comment</label>
-                    <input
-                        placeholder="something"
+                    <input className="comment"
+                        placeholder="add a thought"
                         value={comment}
                         onChange={(e) => handleComment(e)}
                     />
                 </div>
-                <div className="form-item">
+                {/* <ListGroup>
+                    <ListGroup.Item><input
+                        placeholder="something"
+                        value={comment}
+                        onChange={(e) => handleComment(e)}/> </ListGroup.Item>
+                    <ListGroup.Item> <AddCommentForm /></ListGroup.Item>
+                </ListGroup> */}
+
+                {/* <div className="form-item">
                     <label>Quote</label>
                     <input
                         placeholder="Enter Quote"
@@ -71,7 +81,7 @@ const AddCommentForm = () => {
                         onChange={(e) => handleQuote(e)}
                         value={quote}
                     />
-                </div>
+                </div> */}
                 <div className="category-container-parent">
                     <div className="category">
                         <div
@@ -84,7 +94,7 @@ const AddCommentForm = () => {
                         {categoryOpen && (
                             <div >
                                 {categoriesArr.map((category) => (
-                                    <div
+                                    <div className="categoryItem"
                                         key={category.id}
                                         onClick={() => handleCategory(category)}
                                     >
@@ -97,7 +107,7 @@ const AddCommentForm = () => {
                 </div>
                 <div className="comment-add-button">
                     <div >
-                        <button onClick={handleSubmit}>Add</button>
+                        <Button variant="outline-dark" onClick={handleSubmit}>Add</Button>
                     </div>
                 </div>
                 <div />

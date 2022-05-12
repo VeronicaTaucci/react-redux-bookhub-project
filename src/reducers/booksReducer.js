@@ -4,6 +4,7 @@ import { ADD_COMMENT_ABOUT_BOOK} from '../actions/types'
 import { ADD_QUOTE_FROM_BOOK} from '../actions/types'
 import { DELETE_COMMENT_ABOUT_BOOK} from '../actions/types'
 import { DELETE_BOOK} from '../actions/types'
+import { DELETE_BOOK_I_READ} from '../actions/types'
 
 
 const booksReducer = (state, action) => {
@@ -45,12 +46,19 @@ const booksReducer = (state, action) => {
                     ...state,
                     bookList: updatedBookList
                 }
+            case DELETE_BOOK_I_READ:
+            let updatedBookIRead = state.readBooks.filter((book) => book.id !== action.data.book.id);
+                return {
+                    ...state,
+                    readBooks: updatedBookIRead
+                }
         case DELETE_COMMENT_ABOUT_BOOK:
             let updatedComments = state.commentsAboutBook.filter((comment )=> comment.id !== action.data.comment.id);
             return {
                 ...state,
                 commentsAboutBook: updatedComments
             }
+        
         // case SEARCH_BOOK_LIST:
         //     let searchBook = state.readBooks.filter((comment) => comment.id !== action.data.comment.id);
         //     return {
