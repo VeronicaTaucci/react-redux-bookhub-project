@@ -1,7 +1,9 @@
 import {ADD_TO_LIST, SEARCH_BOOK_LIST} from '../actions/types'
 import { ADD_TO_READ} from '../actions/types'
 import { ADD_COMMENT_ABOUT_BOOK} from '../actions/types'
+import { ADD_QUOTE_FROM_BOOK} from '../actions/types'
 import { DELETE_COMMENT_ABOUT_BOOK} from '../actions/types'
+import { DELETE_BOOK} from '../actions/types'
 
 
 const booksReducer = (state, action) => {
@@ -15,8 +17,7 @@ const booksReducer = (state, action) => {
     }
     switch (action.type) {
         case ADD_TO_LIST: {
-            let newBookItems = [...state.bookList, action.data.book] //copying whatever is in state ) 
-            // localStorage.setItem('bookList', JSON.stringify(newBookItems))
+            let newBookItems = [...state.bookList, action.data.book] 
             return {
                 ...state,
                 bookList: newBookItems,
@@ -31,25 +32,31 @@ const booksReducer = (state, action) => {
                 numberOfReadBooks: state.numberOfReadBooks + 1,
                 bookList: state.bookList.filter((book) => book.id !== action.data.book.id)
             }
-            case ADD_COMMENT_ABOUT_BOOK:
-            // console.log('comments about book',action.data.data)
-            let allCommentsAboutBook = [...state.commentsAboutBook, action.data.data]
+        case ADD_COMMENT_ABOUT_BOOK:
+            let updateComment = [...state.commentsAboutBook, action.data.data]
+            // console.log('reducer',action.data)
             return {
                 ...state,
-                commentsAboutBook:allCommentsAboutBook
+                commentsAboutBook: updateComment
             }
+            case DELETE_BOOK:
+                let updatedBookList = state.bookList.filter((book) => book.id !== action.data.book.id);
+                return {
+                    ...state,
+                    bookList: updatedBookList
+                }
         case DELETE_COMMENT_ABOUT_BOOK:
             let updatedComments = state.commentsAboutBook.filter((comment )=> comment.id !== action.data.comment.id);
             return {
                 ...state,
                 commentsAboutBook: updatedComments
             }
-        case SEARCH_BOOK_LIST:
-            let searchBook = state.readBooks.filter((comment) => comment.id !== action.data.comment.id);
-            return {
-                ...state,
-                commentsAboutBook: updatedComments
-            }
+        // case SEARCH_BOOK_LIST:
+        //     let searchBook = state.readBooks.filter((comment) => comment.id !== action.data.comment.id);
+        //     return {
+        //         ...state,
+        //         commentsAboutBook: updatedComments
+        //     }
         default:
             return state
     }
