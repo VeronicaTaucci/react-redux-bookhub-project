@@ -12,27 +12,33 @@ const Home = () => {
     const [searchedBooks, setSearchedBooks] = useState([]);
     const [searchInput, setSearchInput] = useState('');
     const [randomQuote, setRandomQuote] = useState('')
+    const [hideDiv, setHidediv] = useState(true);
     const dispatch = useDispatch();
-
-
-    const [buttonText, setButtonText] = useState('Click');
 
     
     const searchResults = e => {
-        setSearchInput(e.target.value);
+         setSearchInput(e.target.value);   
 }
 
     const handleInput = async () => {
-        let url = `https://www.googleapis.com/books/v1/volumes?q=${searchInput}&maxResults=21`
-    let results = await fetch(url, {
-        headers: {
-            Authorization: API_KEY
+        try {
+                let url = `https://www.googleapis.com/books/v1/volumes?q=${searchInput}&maxResults=21`
+                let results = await fetch(url, {
+                    headers: {
+                        Authorization: API_KEY
+                    }
+                });
+            let data = await results.json();
+            if (data.items == undefined || data.item === "thumbnail") {
+                setHidediv(false)
+                console.log(data.items)
+            }else{setSearchedBooks(data.items)}
+                
+            
+        } catch (err) {
+            console.log("err", err)
         }
-    }); 
-    let data = await results.json();
-    // setData(data.Search);   //sets our state- replaces the empty array with our data
-    setSearchedBooks(data.items);
-    }
+} 
 
     useEffect(() => {
     const handleQuote =async ()=>{
@@ -44,10 +50,24 @@ const Home = () => {
         handleQuote();
 },[])
 
-return (
+    const handleNoPic = (book) => {
+        const newPic = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.newyorker.com%2Fculture%2Fcultural-comment%2Fkirkus-reviews-plight-of-the-problematic-book-review&psig=AOvVaw0MumUZLKFjtqDcPNx71ZED&ust=1653090937781000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCMitiuXh7PcCFQAAAAAdAAAAABAD'
+        console.log(book.volumeInfo)
+        if (book.volumeInfo.imageLinks === undefined) {
+            book.volumeInfo.imageLinks = newPic
+            return newPic
+        } else {
+            let bookPic = book.volumeInfo.imageLinks.thumbnail 
+            console.log("imag oics",bookPic)
+            return bookPic
+    }
+}
+    return (
+    
     <>
-        <div className='heroDiv'>
-            <h1 className='quote'> "{randomQuote}"</h1>
+            <div className='heroDiv'>
+                
+            <h1 className='quote'><span>quote of the day:</span> "{randomQuote}"</h1>
             <div className="search">
                 <input onChange={searchResults} type="text" className="searchTerm" placeholder="Search a book" />
                 <button onClick={handleInput} type="submit" className="searchButton">
@@ -58,10 +78,11 @@ return (
        
         <Header/>
         <div className='searchResults'>
+            {!hideDiv ? <h1>Hmm..no results, try searching for something else!</h1> : null}
             {searchedBooks.map((book) => (
             <Card key={book.id} style={{ width: '15rem' }} className='bookContainer'>
-                <Card.Img variant="top" src={book.volumeInfo.imageLinks.thumbnail} />
-            
+                <Card.Img variant="top" src={handleNoPic(book)} alt="cover picture of the book" />
+                {/* <Card.Img variant="top" src={book.items.imageLinks.thumbnail} /> */}
                     <Card.Title>{book.volumeInfo.title}</Card.Title>
                     <div className='infoButtons'>
                     <InfoModal book={book}><Button >Add To List</Button></InfoModal>

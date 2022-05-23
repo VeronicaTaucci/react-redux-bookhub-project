@@ -2,13 +2,14 @@
   background-color: rgb(242, 236, 236);
   font-size: large;
   display: flex;
-  width: 50vw;
-  height: 30vw;
+  width: 200%;
+  height: 100%;
 }
 
 .modal-body {
   display: flex;
   flex-direction: column;
+    width: 100%;
 }
 .listGroup{
 display: flex;
@@ -17,4 +18,19 @@ display: flex;
 .count{
   display: flex;
   justify-content: flex-end;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.on {
+  color: #000;
+}
+
+.off {
+  color: #ccc;
 }

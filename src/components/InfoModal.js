@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { addToList } from '../actions/addToList';
-import './styling/infoModal.css';
 const InfoModal = (book) => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);

@@ -25,3 +25,6 @@ yarn-error.log*
 .env
 
 //https://www.googleapis.com/books/v1/volumes?q=${searchInput}&key=${API_KEY}
+# Local Netlify folder
+.netlify
+ ./secrets.js
