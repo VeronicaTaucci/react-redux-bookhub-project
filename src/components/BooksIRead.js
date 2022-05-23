@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import Header from './layout/Header'
 import './styling/homePage.css';
 import DisplayRecords from './DisplayRecords'
+import CanvasProgress from './CanvasProgress'
 import { deleteBookIRead } from '../actions/deleteBookIRead'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -38,10 +39,12 @@ const AllBooks = () => {
                         <Card key={book.id} style={{ width: '15rem' }} className='bookContainer'>
                             <Card.Img variant="top" src={book.volumeInfo.imageLinks.thumbnail} />
                             <Card.Title>{book.volumeInfo.title}</Card.Title>
+                            {/* <CanvasProgress key={book.volumeInfo.id} book={book}/> */}
                             
                             <div className='infoButtons'>
                                 {/* <Button variant="outline-dark" onClick={(book) => setVisible(!visible)}>{visible ? 'Hide' : 'Show'}</Button> */}
-                                <DisplayRecords recordBook={book}/>    
+                                
+                                <DisplayRecords recordBook={book} />    
                                 <Button variant="outline-dark" onClick={() => dispatch(deleteBookIRead(book))}>Delete</Button>
                             </div>
                             

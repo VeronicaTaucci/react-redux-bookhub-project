@@ -6,11 +6,13 @@ import { deleteCommentAboutBook } from '../actions/deleteCommentAboutBook'
 import Button from "react-bootstrap/esm/Button";
 
 
-const CommentsDisplay = () => {
+const CommentsDisplay = (bookId) => {
+    // console.log(bookId.bookId)
     const comments = useSelector((state) => state.books.books)
-    console.log("commentsDisplay component", comments)
     const dispatch = useDispatch();
-
+    let id = bookId.bookId
+    let filteredComments = comments.filter((comment) => comment.bookId == id)
+    // console.log("commentsDisplay component", filteredComments)
     // state.bookList.filter((comment) => comment.id !== action.data.comment.id);
     
     return (
@@ -18,13 +20,8 @@ const CommentsDisplay = () => {
             <div>
                 <h1>All the comments:</h1>
                 <ListGroup>
-                    {comments.map((comment) => {
+                    {filteredComments.map((comment) => {
                     return(
-                        // <div>
-                        //    <div>{comment.comment} <br/> <span>Category: {comment.category}</span> <br/> created {moment(time).fromNow()}</div>
-                        //     <button onClick={()=>dispatch(deleteCommentAboutBook(comment))}>delete</button></div>
-                        
-                      
                         <ListGroup.Item className="listGroup">{comment.comment}
                             <Button variant="outline-dark" onClick={() => dispatch(deleteCommentAboutBook(comment))}>delete</Button>
                             </ListGroup.Item>

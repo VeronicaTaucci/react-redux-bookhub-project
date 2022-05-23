@@ -8,7 +8,7 @@ import CommentsDisplay from './CommentsDisplay'
 import { categories } from "../constants/add-comments"
 import ListGroup from 'react-bootstrap/ListGroup';
 const DisplayRecords = (book) => { 
-    console.log(book)
+ 
     const categoriesArr = categories;
     const [category, setCategory] = useState('')
     const [comment, setComment] = useState('')
@@ -17,9 +17,17 @@ const DisplayRecords = (book) => {
     const [categoryOpen, setCategoryOpen] = useState(false)
     const dispatch = useDispatch();
     const [count, setCount] = useState(0)
-
+    const comments = useSelector((state) => state.books.books)
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
+    console.log(book.recordBook.id)
+    const recordsId = book.recordBook.id;
+    let filteredRecords = comments.filter((record) => record.bookId == recordsId)
+    console.log(filteredRecords)
+
+
+
+
     const handleShow = (book) => {
         setShow(true)
         setTitle(book.recordBook.volumeInfo.title)
@@ -37,12 +45,13 @@ const DisplayRecords = (book) => {
 
     const handleSubmit = (book) => {
         const bookRecord = {
+            bookId:book.recordBook.id,
             bookTitle: book.recordBook.volumeInfo.title,
             comment: comment,
             rating: rating,
-            category:category,
+            category: category,
+            count:count,
         }
-        console.log("book",bookRecord)
         dispatch(addRecordAboutBook(bookRecord))
     }
     
@@ -52,7 +61,7 @@ return (
         <Button variant="outline-dark" onClick={handleShow}>
             My records about the Book
         </Button>
-        <Modal show={show} onHide={handleClose}>
+        <Modal className="mainModal" show={show} onHide={handleClose}>
             <Modal.Body>
                {book.recordBook.volumeInfo.title}
                    <div>
@@ -113,7 +122,7 @@ return (
                         </div>
                         <div /></div>
                 
-<CommentsDisplay/>
+                <CommentsDisplay bookId={book.recordBook.id} />
                 {/* <div>
                     <h1>All the comments:</h1>
                     <ul>
