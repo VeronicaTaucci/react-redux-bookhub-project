@@ -1,14 +1,14 @@
-import React, { useState} from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux"
+import './styling/addCommentAboutBook.css'
+import React, {useState,useEffect} from 'react'
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import ListGroup from 'react-bootstrap/ListGroup';
-import './styling/progressModal.css';
+import {addRecordAboutBook} from '../actions/addRecordAboutBook'
+import CommentsDisplay from './CommentsDisplay'
 import { categories } from "../constants/add-comments"
-import { addRecordAboutBook } from '../actions/addRecordAboutBook'
-import CommentsDisplay from './CommentsDisplay';
-const ProgressModal = (book) => {
-console.log(book.book.volumeInfo.title)
+import ListGroup from 'react-bootstrap/ListGroup';
+const DisplayRecords = (book) => { 
+    console.log(book)
     const categoriesArr = categories;
     const [category, setCategory] = useState('')
     const [comment, setComment] = useState('')
@@ -17,16 +17,17 @@ console.log(book.book.volumeInfo.title)
     const [categoryOpen, setCategoryOpen] = useState(false)
     const dispatch = useDispatch();
     const [count, setCount] = useState(0)
-    const [show, setShow] = useState(false);
-    
-    const [rating, setRating] = useState(0);
-    const [hover, setHover] = useState(0);
-    const handleClose = () => setShow(false);
 
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
     const handleShow = (book) => {
         setShow(true)
         setTitle(book.recordBook.volumeInfo.title)
     };
+
+    const [rating, setRating] = useState(0);
+    const [hover, setHover] = useState(0);
+
 
     const handleCategory = (category) => {
         setCategory(category)
@@ -39,22 +40,22 @@ console.log(book.book.volumeInfo.title)
             bookTitle: book.recordBook.volumeInfo.title,
             comment: comment,
             rating: rating,
-            category: category,
+            category:category,
         }
-        console.log("book", bookRecord)
+        console.log("book",bookRecord)
         dispatch(addRecordAboutBook(bookRecord))
     }
-
-    return (
-        <>
-
-            <Button variant="outline-dark" onClick={handleShow}>
-                My records about the Book
-            </Button>
-            <Modal show={show} onHide={handleClose}>
-                <Modal.Body>
-                    {book.book.volumeInfo.title}
-                    <div>
+    
+return (
+    <>
+        
+        <Button variant="outline-dark" onClick={handleShow}>
+            My records about the Book
+        </Button>
+        <Modal show={show} onHide={handleClose}>
+            <Modal.Body>
+               {book.recordBook.volumeInfo.title}
+                   <div>
                         <div className="star-rating">
                             {[...Array(5)].map((star, index) => {
                                 index += 1;
@@ -72,7 +73,7 @@ console.log(book.book.volumeInfo.title)
                                 );
                             })}
                         </div>
-                        <ListGroup.Item>Pages read: {count}<Button className="count" variant="outline-dark" onClick={() => setCount(count + 1)}>ADD</Button></ListGroup.Item>
+                    <ListGroup.Item>Pages read: {count}<Button className="count" variant="outline-dark" onClick={() => setCount(count + 1)}>ADD</Button></ListGroup.Item>
 
 
                         <div className="form-item">
@@ -107,21 +108,41 @@ console.log(book.book.volumeInfo.title)
                         </div>
                         <div className="comment-add-button">
                             <div >
-                                <Button variant="outline-dark" onClick={() => handleSubmit(book)}>Add</Button>
+                                <Button variant="outline-dark" onClick={()=>handleSubmit(book)}>Add</Button>
                             </div>
                         </div>
                         <div /></div>
-                    <CommentsDisplay/>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Close
-                    </Button>
-                </Modal.Footer>
-            </Modal>
+                
+<CommentsDisplay/>
+                {/* <div>
+                    <h1>All the comments:</h1>
+                    <ul>
+                        {displayTheComment.filter((comment) => { comment.bookTitle == book.recordBook.volumeInfo.title
+                    return(
+                        // <div>
+                        //    <div>{comment.comment} <br/> <span>Category: {comment.category}</span> <br/> created {moment(time).fromNow()}</div>
+                        //     <button onClick={()=>dispatch(deleteCommentAboutBook(comment))}>delete</button></div>
+                        
+                      
+                        <li >comment.comment
+                            <Button variant="outline-dark" >delete</Button>
+                            </li>
+                      
+                    )
+                })}
+                </ul>
+                </div> */}
 
-        </>)
+            </Modal.Body>         
+            <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>
+                    Close
+                </Button>
+            </Modal.Footer>
+        </Modal>
+       
+        
+    </>)
 }
 
-
-export default ProgressModal
+export default DisplayRecords

@@ -7,8 +7,7 @@ import Button from "react-bootstrap/esm/Button";
 
 
 const CommentsDisplay = () => {
-    const comments = useSelector((state) => state.books.commentsAboutBook)
-    const time = useSelector((state) => state.books.commentsAboutBook.createdAt)
+    const comments = useSelector((state) => state.books.books)
     console.log("commentsDisplay component", comments)
     const dispatch = useDispatch();
 

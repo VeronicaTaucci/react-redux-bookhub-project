@@ -1,6 +1,6 @@
 
-// import { DELETE_COMMENT_ABOUT_BOOK } from './types'
 import { ADD_COMMENT_ABOUT_BOOK } from './types'
+
 export const addCommentAboutBook = (data) => {
     console.log('addCommentAboutBook',data)
     return {

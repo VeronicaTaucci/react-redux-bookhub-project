@@ -1,6 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { Link } from "react-router-dom";
 import { addToReadList } from '../actions/bookRead'
 import { deleteBook } from '../actions/deleteBook'
 import ProgressModal from './ProgressModal'
@@ -10,29 +9,35 @@ import Button from 'react-bootstrap/Button';
 
 import Header from './layout/Header';
 import Card from 'react-bootstrap/Card';
+import { useState } from 'react'
 const AllBooks = () => {
     const dispatch = useDispatch()
     const bookList = useSelector(state => state.books.bookList)  //added
-    const counter = useSelector(state => state.count)
+    const [hideDiv, setHideDiv] = useState()
+   
+    
+    useEffect(() => {
+        const checkList = () => {
+            console.log(bookList)
+            if (bookList.length !=0) {
+                setHideDiv(true)
+            }
+        }
+        checkList()
+    }, [])
+    
+       
+ 
+   
 
+    
     return (
         <>
+      
 
-{/*             
-            <ul>
-                {bookList.length === 0 ? <div>YOU HAVE NO BOOKS</div> : bookList.map((book) => {
-                    return(
-                    <div>
-                    <img src={book.volumeInfo.imageLinks.thumbnail} key={book.id} />
-                            <p>{book.volumeInfo.title}</p>
-                            <Button variant='secondary' onClick={() => dispatch(addToReadList(book))}>Add To Books I've Read</Button>
-                            <Button variant='secondary' onClick={() => dispatch(deleteBook(book))}>Delete</Button>
-                            <ProgressModal book={book}></ProgressModal> 
-                    </div>)
-                    }
-                )}
-            </ul> */}
-            <Header/>
+            <Header />
+            {!hideDiv ? <h1> <br />you have no books in your collection
+        </h1> : null}
             <div className='searchResults'>
                 {bookList.map((book) => (
                     <Card key={book.id} style={{ width: '15rem' }} className='bookContainer'>
