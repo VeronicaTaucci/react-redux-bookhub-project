@@ -24,7 +24,7 @@ const AllBooks = () => {
             }
         }
         checkList()
-    }, [])
+    },[])
     
 
     return (

@@ -1,5 +1,5 @@
 import React, { useState} from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
@@ -13,7 +13,6 @@ console.log(book.book.volumeInfo.title)
     const [category, setCategory] = useState('')
     const [comment, setComment] = useState('')
     const [title, setTitle] = useState('')
-    const [visible, setVisible] = useState(false)
     const [categoryOpen, setCategoryOpen] = useState(false)
     const dispatch = useDispatch();
     const [count, setCount] = useState(0)
