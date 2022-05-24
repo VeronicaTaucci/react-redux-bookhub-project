@@ -35,8 +35,9 @@ console.log(book.book.volumeInfo.title)
 
 
     const handleSubmit = (book) => {
+        console.log(book.book.volumeInfo.title)
         const bookRecord = {
-            bookTitle: book.recordBook.volumeInfo.title,
+            bookTitle: book.book.volumeInfo.title,
             comment: comment,
             rating: rating,
             category: category,
@@ -111,7 +112,7 @@ console.log(book.book.volumeInfo.title)
                             </div>
                         </div>
                         <div /></div>
-                    <CommentsDisplay/>
+                    <CommentsDisplay book={book.id}/>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>

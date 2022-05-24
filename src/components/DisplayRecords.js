@@ -123,24 +123,6 @@ return (
                         <div /></div>
                 
                 <CommentsDisplay bookId={book.recordBook.id} />
-                {/* <div>
-                    <h1>All the comments:</h1>
-                    <ul>
-                        {displayTheComment.filter((comment) => { comment.bookTitle == book.recordBook.volumeInfo.title
-                    return(
-                        // <div>
-                        //    <div>{comment.comment} <br/> <span>Category: {comment.category}</span> <br/> created {moment(time).fromNow()}</div>
-                        //     <button onClick={()=>dispatch(deleteCommentAboutBook(comment))}>delete</button></div>
-                        
-                      
-                        <li >comment.comment
-                            <Button variant="outline-dark" >delete</Button>
-                            </li>
-                      
-                    )
-                })}
-                </ul>
-                </div> */}
 
             </Modal.Body>         
             <Modal.Footer>
