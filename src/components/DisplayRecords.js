@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
 import './styling/addCommentAboutBook.css'
-import React, {useState,useEffect} from 'react'
+import React, {useState} from 'react'
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import {addRecordAboutBook} from '../actions/addRecordAboutBook'
@@ -13,7 +13,6 @@ const DisplayRecords = (book) => {
     const [category, setCategory] = useState('')
     const [comment, setComment] = useState('')
     const [title, setTitle] = useState('')
-    const [visible, setVisible] = useState(false)
     const [categoryOpen, setCategoryOpen] = useState(false)
     const dispatch = useDispatch();
     const [count, setCount] = useState(0)
@@ -22,7 +21,7 @@ const DisplayRecords = (book) => {
     const handleClose = () => setShow(false);
     console.log(book.recordBook.id)
     const recordsId = book.recordBook.id;
-    let filteredRecords = comments.filter((record) => record.bookId == recordsId)
+    let filteredRecords = comments.filter((record) => record.bookId === recordsId)
     console.log(filteredRecords)
 
 

@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux"
-import moment from 'moment';
 import './styling/addCommentAboutBook.css'
 import ListGroup from 'react-bootstrap/ListGroup';
 import { deleteCommentAboutBook } from '../actions/deleteCommentAboutBook'
@@ -7,13 +6,10 @@ import Button from "react-bootstrap/esm/Button";
 
 
 const CommentsDisplay = (bookId) => {
-    // console.log(bookId.bookId)
     const comments = useSelector((state) => state.books.books)
     const dispatch = useDispatch();
     let id = bookId.bookId
-    let filteredComments = comments.filter((comment) => comment.bookId == id)
-    // console.log("commentsDisplay component", filteredComments)
-    // state.bookList.filter((comment) => comment.id !== action.data.comment.id);
+    let filteredComments = comments.filter((comment) => comment.bookId === id)
     
     return (
         <> 

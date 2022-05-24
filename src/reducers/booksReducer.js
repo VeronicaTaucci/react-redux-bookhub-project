@@ -1,6 +1,5 @@
-import {ADD_TO_LIST, SEARCH_BOOK_LIST} from '../actions/types'
+import {ADD_TO_LIST} from '../actions/types'
 import { ADD_TO_READ} from '../actions/types'
-import { ADD_COMMENT_ABOUT_BOOK} from '../actions/types'
 import { DELETE_COMMENT_ABOUT_BOOK} from '../actions/types'
 import { DELETE_BOOK} from '../actions/types'
 import { DELETE_BOOK_I_READ} from '../actions/types'
