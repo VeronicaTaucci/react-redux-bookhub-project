@@ -25,7 +25,7 @@
 
 .searchTerm {
     
-    width: 600px;
+    width: 50vw;
     border: 3px solid #051b1e;
     border-right: none;
     padding: 5px;
@@ -51,13 +51,6 @@
     cursor: pointer;
     font-size: 20px;
 }
-
-/*Resize the wrap to see the search bar change!*/
-/* .wrap {
-    width: 30%;
-    margin: auto;
-    margin-top: 50px;
-} */
 
 
 /* search results */

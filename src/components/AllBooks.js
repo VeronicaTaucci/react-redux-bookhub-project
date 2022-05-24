@@ -19,21 +19,16 @@ const AllBooks = () => {
     useEffect(() => {
         const checkList = () => {
             console.log(bookList)
-            if (bookList.length !=0) {
+            if (bookList.length !==0) {
                 setHideDiv(true)
             }
         }
         checkList()
     }, [])
     
-       
- 
-   
 
-    
     return (
         <>
-      
 
             <Header />
             {!hideDiv ? <h1> <br />you have no books in your collection

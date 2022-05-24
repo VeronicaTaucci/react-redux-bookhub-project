@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 import Header from './layout/Header'
 import './styling/homePage.css';
 import DisplayRecords from './DisplayRecords'
-import CanvasProgress from './CanvasProgress'
 import { deleteBookIRead } from '../actions/deleteBookIRead'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
