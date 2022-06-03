@@ -13,7 +13,7 @@ const Header = () => {
                     <Container>
                        <Link className='links'  to="/">Search for a book</Link>
                         <Link className='links'  to="/components/allbooks">My Collection</Link>
-                        <Link  className='links' to="/components/booksiread">Books I read already</Link>
+                        <Link  className='links' to="/components/booksiread">Books I've already read</Link>
                     </Container>
                 </Navbar>
         </>

@@ -31,8 +31,11 @@ const Home = () => {
             let data = await results.json();
             if (data.items == undefined || data.item === "thumbnail") {
                 setHidediv(false)
-                console.log(data.items)
-            }else{setSearchedBooks(data.items)}
+                // console.log(data.items)
+            } else {
+                setHidediv(true)
+                setSearchedBooks(data.items)
+            }
                 
             
         } catch (err) {
