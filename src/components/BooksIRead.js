@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux';
 import Header from './layout/Header'
@@ -23,15 +23,24 @@ const AllBooks = () => {
         setCategory(category)
         setCategoryOpen(false)
     }
+    const [hideDiv, setHideDiv] = useState()
 
 
-    const handleSubmit = () => {
+    useEffect(() => {
+        const checkList = () => {
+            if (booksIReadAlready.length !== 0) {
+                setHideDiv(true)
+            }
+        }
+        checkList()
+    }, [])
 
-    }
     
     return (
         <>
-            <Header/>
+            <Header />
+            {!hideDiv ? <h1> <br />Please read some books, there is nothing to display here yet :(
+            </h1> : null}
             <div className='searchResults'>
                 {booksIReadAlready.map((book) => {
                     return (

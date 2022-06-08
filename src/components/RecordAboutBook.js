@@ -34,7 +34,7 @@ const RecordAboutBook = ({bookTitle}) => {
             bookTitle:bookTitle
             }
         }
-        console.log("bookRecord in component",bookRecord)
+        // console.log("bookRecord in component",bookRecord)
         dispatch(addRecordAboutBook(bookRecord))
 }
 

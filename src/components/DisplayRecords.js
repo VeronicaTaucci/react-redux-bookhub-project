@@ -15,19 +15,18 @@ const DisplayRecords = (book) => {
     const [category, setCategory] = useState('')
     const [comment, setComment] = useState('')
     const [count, setCount] = useState(0)
-    const [title, setTitle] = useState('')
     const [categoryOpen, setCategoryOpen] = useState(false)
     const dispatch = useDispatch();
-    const comments = useSelector((state) => state.books.books)
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
-    const recordsId = book.recordBook.id;
-    let filteredRecords = comments.filter((record) => record.bookId === recordsId)
-    const getRecords = useSelector((state) => state.records)
-    let sortBy = book.recordBook.volumeInfo.title.replace(/ /g, "")
-    let sorted = getRecords[sortBy]
     const [rating, setRating] = useState(0);
     const [hover, setHover] = useState(0);
+    // const comments = useSelector((state) => state.books.books)
+    // const recordsId = book.recordBook.id;
+    // let filteredRecords = comments.filter((record) => record.bookId === recordsId)
+    // const getRecords = useSelector((state) => state.records)
+    // let sortBy = book.recordBook.volumeInfo.title.replace(/ /g, "")
+    // let sorted = getRecords[sortBy]
 
 
     useEffect(() => {
