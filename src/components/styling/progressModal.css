@@ -1,25 +1,4 @@
-.modal-content {
-  background-color: rgb(242, 236, 236);
-  font-size: large;
-  display: flex;
- 
-  width: 50vw;
-  height: 100%;
-}
 
-
-
-.modal-body {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-      
-}
-@media (max-width: 1000px) {
-.modal-content {
- width: 50vw;
-  }
-}
 .listGroup{
 display: flex;
 }

@@ -11,7 +11,6 @@ const booksReducer = (state, action) => {
             bookList: [],  //[{}] this is in the books I want to read
             numberOfReadBooks: 0, //how many books I already Read
             readBooks: [], //books I've read already
-            commentsAboutBook: [],
             books: []
         }
     }

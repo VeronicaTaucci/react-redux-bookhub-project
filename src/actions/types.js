@@ -7,3 +7,4 @@ export const DELETE_BOOK = "DELETE_BOOK";
 export const DELETE_BOOK_I_READ = "DELETE_BOOK_I_READ";
 export const ADD_RECORD_ABOUT_BOOK = "ADD_RECORD_ABOUT_BOOK";
 export const DISPLAY_RECORDS = "DISPLAY_RECORDS";
+export const RECORDS = "RECORDS";

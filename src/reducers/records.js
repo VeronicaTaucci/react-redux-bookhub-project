@@ -1,19 +1,21 @@
 
-import { ADD_RECORD_ABOUT_BOOK } from '../actions/types'
+import { RECORDS } from '../actions/types'
 
 const records = (state, action) => {
     if (state === undefined) {
         state = {
-            books:[]
         }
     }
         switch (action.type) {
-            case ADD_RECORD_ABOUT_BOOK:
-                console.log("book records in state",state)
-                // let updatedRecord = state.books.filter((book) => book.title !== action.data.bookRecord.book.bookTitle)
+            case RECORDS:
+                let key1 = [action.data.bookTitle]
+                let key = key1[0].replace(/ /g, "")
+                // console.log(key)
+                let obj = action.data
+                // console.log(book)
                 return {
                     ...state,
-                    book: [...state, action.data.bookRecord]
+                    [key]:obj
                 }
          default:
                 return state
