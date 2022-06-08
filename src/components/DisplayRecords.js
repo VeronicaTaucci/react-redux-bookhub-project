@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
 import './styling/addCommentAboutBook.css'
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import {addRecordAboutBook} from '../actions/addRecordAboutBook'
@@ -10,14 +10,14 @@ import { categories } from "../constants/add-comments"
 import ListGroup from 'react-bootstrap/ListGroup';
 import RecordsDisplay from "./RecordsDisplay";
 const DisplayRecords = (book) => { 
- 
+    let allRecords = useSelector((state) => state.records)
     const categoriesArr = categories;
     const [category, setCategory] = useState('')
     const [comment, setComment] = useState('')
+    const [count, setCount] = useState(0)
     const [title, setTitle] = useState('')
     const [categoryOpen, setCategoryOpen] = useState(false)
     const dispatch = useDispatch();
-    const [count, setCount] = useState(0)
     const comments = useSelector((state) => state.books.books)
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -26,20 +26,27 @@ const DisplayRecords = (book) => {
     const getRecords = useSelector((state) => state.records)
     let sortBy = book.recordBook.volumeInfo.title.replace(/ /g, "")
     let sorted = getRecords[sortBy]
-    // let count1 = sorted.count
-    console.log(sorted)
- 
+    const [rating, setRating] = useState(0);
+    const [hover, setHover] = useState(0);
 
 
-
+    useEffect(() => {
+        // bring back num of pgs read before 
+        let bookTitle = book.recordBook.volumeInfo.title.replace(/ /g, "")
+        let sortedObj = allRecords[bookTitle]
+        if (!sortedObj) {
+            setCount(0)
+        } else {
+            let pagesRead = sortedObj.count
+            setCount(pagesRead)
+        }
+    }, [])
 
     const handleShow = (book) => {
         setShow(true)
-        setTitle(book.recordBook.volumeInfo.title)
     };
 
-    const [rating, setRating] = useState(0);
-    const [hover, setHover] = useState(0);
+    
 
 
     const handleCategory = (category) => {
@@ -92,7 +99,7 @@ return (
                                 );
                             })}
                         </div>
-                    <ListGroup.Item>Pages read: {count}<Button className="count" variant="outline-dark" onClick={() => setCount(count + 1)}>ADD</Button></ListGroup.Item>
+                    <ListGroup.Item>Pages read:{count}<Button className="count" variant="outline-dark" onClick={() => setCount(count + 1)}>ADD</Button></ListGroup.Item>
                     <div className="category-container-parent">
                         <div className="category">
                             <div

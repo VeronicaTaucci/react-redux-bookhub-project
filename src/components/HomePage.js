@@ -21,6 +21,7 @@ const Home = () => {
 }
 
     const handleInput = async () => {
+        
         try {
                 let url = `https://www.googleapis.com/books/v1/volumes?q=${searchInput}&maxResults=21`
                 let results = await fetch(url, {
@@ -36,7 +37,7 @@ const Home = () => {
                 setHidediv(true)
                 setSearchedBooks(data.items)
             }
-                
+
             
         } catch (err) {
             console.log("err", err)
@@ -45,10 +46,11 @@ const Home = () => {
 
     useEffect(() => {
     const handleQuote =async ()=>{
-        let fetchQuoteApi = await fetch('https://api.adviceslip.com/advice');
+        let fetchQuoteApi = await fetch('https://zenquotes.io/api/random');
         let data = await fetchQuoteApi.json();
-        // console.log(data)
-        setRandomQuote(data.slip.advice);
+        // console.log(data[0].q)
+        let quote = data[0].q
+        setRandomQuote(quote);
     }
         handleQuote();
 },[])
@@ -69,8 +71,7 @@ const Home = () => {
     
     <>
             <div className='heroDiv'>
-                
-            <h1 className='quote'><span>quote of the day:</span> "{randomQuote}"</h1>
+                <h1 className='quote'>quote of the day:<span className='quoteCursive'>"{randomQuote}"</span> </h1>
             <div className="search">
                 <input onChange={searchResults} type="text" className="searchTerm" placeholder="Search a book" />
                 <button onClick={handleInput} type="submit" className="searchButton">
@@ -89,7 +90,7 @@ const Home = () => {
                     <Card.Title>{book.volumeInfo.title}</Card.Title>
                     <div className='infoButtons'>
                     <InfoModal book={book}><Button >Add To List</Button></InfoModal>
-                    <Button onClick={() => dispatch(addToList(book))} variant="outline-dark">Add To Wish List</Button>
+                    <Button onClick={() => dispatch(addToList(book))} variant="outline-dark">Add To My Collection</Button>
                     </div>
                 </Card>)) 
             }
