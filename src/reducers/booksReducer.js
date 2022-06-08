@@ -16,7 +16,7 @@ const booksReducer = (state, action) => {
     }
     switch (action.type) {
         case ADD_RECORD_ABOUT_BOOK:
-            console.log("book records in state", state)
+            // console.log("book records in state", state)
             let updatedRecord = [...state.books, action.data.data]
             return {
                 ...state,
@@ -59,7 +59,7 @@ const booksReducer = (state, action) => {
                 }
         case DELETE_COMMENT_ABOUT_BOOK:
             let updatedComments = state.books.filter((book) => book.comment !== action.data.comment);
-            console.log(state.books)
+            // console.log(state.books)
             return {
                 ...state,
                 books: updatedComments

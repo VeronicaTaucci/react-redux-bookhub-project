@@ -3,7 +3,6 @@ import './header.css'
 import { Link } from 'react-router-dom'
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
-import Container from 'react-bootstrap/Container';
 
 const Header = () => {
     return (
@@ -19,15 +18,7 @@ const Header = () => {
                         </Nav>
                     </Navbar.Collapse>
             </Navbar>
-            
-            
-                {/* <Navbar expand="lg" variant="light" bg="light">
-                    <Container>
-                       <Link className='links'  to="/">Search for a book</Link>
-                        <Link className='links'  to="/components/allbooks">My Collection</Link>
-                        <Link  className='links' to="/components/booksiread">Books I've already read</Link>
-                    </Container>
-                </Navbar> */}
+         
         </>
     )
 }

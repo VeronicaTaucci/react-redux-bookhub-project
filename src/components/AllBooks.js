@@ -18,7 +18,7 @@ const AllBooks = () => {
     
     useEffect(() => {
         const checkList = () => {
-            console.log(bookList)
+            // console.log(bookList)
             if (bookList.length !==0) {
                 setHideDiv(true)
             }

@@ -12,7 +12,7 @@ const SearchBookList = () => {
             return book.volumeInfo.title.toLowerCase().includes(filteredText.toLowerCase())
         })
         setFilteredArr(filteredBooks)
-        console.log(filteredBooks)
+        // console.log(filteredBooks)
     }
     return (
         <>

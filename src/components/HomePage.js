@@ -30,7 +30,7 @@ const Home = () => {
                     }
                 });
             let data = await results.json();
-            if (data.items == undefined || data.item === "thumbnail") {
+            if (data.items === undefined || data.item === "thumbnail") {
                 setHidediv(false)
                 // console.log(data.items)
             } else {
@@ -57,13 +57,13 @@ const Home = () => {
 
     const handleNoPic = (book) => {
         const newPic = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.newyorker.com%2Fculture%2Fcultural-comment%2Fkirkus-reviews-plight-of-the-problematic-book-review&psig=AOvVaw0MumUZLKFjtqDcPNx71ZED&ust=1653090937781000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCMitiuXh7PcCFQAAAAAdAAAAABAD'
-        console.log(book.volumeInfo)
+        // console.log(book.volumeInfo)
         if (book.volumeInfo.imageLinks === undefined) {
             book.volumeInfo.imageLinks = newPic
             return newPic
         } else {
             let bookPic = book.volumeInfo.imageLinks.thumbnail 
-            console.log("imag oics",bookPic)
+            // console.log("imag oics",bookPic)
             return bookPic
     }
 }
