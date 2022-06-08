@@ -7,8 +7,10 @@ import './styling/progressModal.css';
 import { categories } from "../constants/add-comments"
 import { addRecordAboutBook } from '../actions/addRecordAboutBook'
 import CommentsDisplay from './CommentsDisplay';
+import { records } from '../actions/records'
+import RecordsDisplay from './RecordsDisplay';
+
 const ProgressModal = (book) => {
-console.log(book.book.volumeInfo.title)
     const categoriesArr = categories;
     const [category, setCategory] = useState('')
     const [comment, setComment] = useState('')
@@ -34,15 +36,22 @@ console.log(book.book.volumeInfo.title)
 
 
     const handleSubmit = (book) => {
-        console.log(book.book.volumeInfo.title)
         const bookRecord = {
             bookTitle: book.book.volumeInfo.title,
             comment: comment,
             rating: rating,
             category: category,
         }
-        console.log("book", bookRecord)
         dispatch(addRecordAboutBook(bookRecord))
+        const recordsData = {
+            bookTitle: book.recordBook.volumeInfo.title,
+            bookId: book.recordBook.id,
+            rating: rating,
+            category: category,
+            count: count,
+            comment: comment,
+        }
+        dispatch(records(recordsData))
     }
 
     return (

@@ -4,9 +4,11 @@ import React, {useState} from 'react'
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import {addRecordAboutBook} from '../actions/addRecordAboutBook'
+import {records} from '../actions/records'
 import CommentsDisplay from './CommentsDisplay'
 import { categories } from "../constants/add-comments"
 import ListGroup from 'react-bootstrap/ListGroup';
+import RecordsDisplay from "./RecordsDisplay";
 const DisplayRecords = (book) => { 
  
     const categoriesArr = categories;
@@ -19,10 +21,14 @@ const DisplayRecords = (book) => {
     const comments = useSelector((state) => state.books.books)
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
-    console.log(book.recordBook.id)
     const recordsId = book.recordBook.id;
     let filteredRecords = comments.filter((record) => record.bookId === recordsId)
-    console.log(filteredRecords)
+    const getRecords = useSelector((state) => state.records)
+    let sortBy = book.recordBook.volumeInfo.title.replace(/ /g, "")
+    let sorted = getRecords[sortBy]
+    // let count1 = sorted.count
+    console.log(sorted)
+ 
 
 
 
@@ -47,16 +53,21 @@ const DisplayRecords = (book) => {
             bookId:book.recordBook.id,
             bookTitle: book.recordBook.volumeInfo.title,
             comment: comment,
-            rating: rating,
-            category: category,
-            count:count,
         }
         dispatch(addRecordAboutBook(bookRecord))
+        const recordsData = {
+            bookTitle: book.recordBook.volumeInfo.title,
+            bookId: book.recordBook.id,
+            rating: rating,
+            category: category,
+            count: count,
+            comment: comment,
+        }
+        dispatch(records(recordsData))
     }
     
 return (
     <>
-        
         <Button variant="outline-dark" onClick={handleShow}>
             My records about the Book
         </Button>
@@ -82,7 +93,29 @@ return (
                             })}
                         </div>
                     <ListGroup.Item>Pages read: {count}<Button className="count" variant="outline-dark" onClick={() => setCount(count + 1)}>ADD</Button></ListGroup.Item>
+                    <div className="category-container-parent">
+                        <div className="category">
+                            <div
+                                className="category-dropdown"
+                                onClick={() => setCategoryOpen(!categoryOpen)}
+                            >
+                                <label>{category ? category.title : "Category"}</label>
 
+                            </div>
+                            {categoryOpen && (
+                                <div >
+                                    {categoriesArr.map((category) => (
+                                        <div className="categoryItem"
+                                            key={category.id}
+                                            onClick={() => handleCategory(category)}
+                                        >
+                                            <label>{category.title}</label>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+                    </div>
 
                         <div className="form-item">
                             <input className="comment"
@@ -91,36 +124,14 @@ return (
                                 onChange={(e) => setComment(e.target.value)}
                             />
                         </div>
-                        <div className="category-container-parent">
-                            <div className="category">
-                                <div
-                                    className="category-dropdown"
-                                    onClick={() => setCategoryOpen(!categoryOpen)}
-                                >
-                                    <label>{category ? category.title : "Category"}</label>
-
-                                </div>
-                                {categoryOpen && (
-                                    <div >
-                                        {categoriesArr.map((category) => (
-                                            <div className="categoryItem"
-                                                key={category.id}
-                                                onClick={() => handleCategory(category)}
-                                            >
-                                                <label>{category.title}</label>
-                                            </div>
-                                        ))}
-                                    </div>
-                                )}
-                            </div>
-                        </div>
+                      
                         <div className="comment-add-button">
                             <div >
-                                <Button variant="outline-dark" onClick={()=>handleSubmit(book)}>Add</Button>
+                                <Button variant="outline-dark" onClick={()=>handleSubmit(book)}>Add Records</Button>
                             </div>
                         </div>
                         <div /></div>
-                
+                <RecordsDisplay book={book.recordBook} />
                 <CommentsDisplay bookId={book.recordBook.id} />
 
             </Modal.Body>         
