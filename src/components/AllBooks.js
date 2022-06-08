@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { addToReadList } from '../actions/bookRead'
 import { deleteBook } from '../actions/deleteBook'
-import ProgressModal from './ProgressModal'
+import DisplayRecords from './DisplayRecords'
 import { useDispatch } from 'react-redux';
 import './styling/homePage.css';
 import Button from 'react-bootstrap/Button';
@@ -40,7 +40,7 @@ const AllBooks = () => {
 
                         <Card.Title>{book.volumeInfo.title}</Card.Title>
                         <div className='infoButtons'>
-                            <ProgressModal book={book}></ProgressModal>
+                            <DisplayRecords recordBook={book}/>
                             <Button variant="outline-dark" onClick={() => dispatch(addToReadList(book))}>Add To Books I've Read</Button>
                             <Button variant="outline-dark" onClick={() => dispatch(deleteBook(book))}>Delete</Button>
                         </div>

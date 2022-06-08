@@ -3,4 +3,9 @@
     font-family: 'Fira Code', monospace;
     font-size: 2rem;
     text-decoration: none;
+    margin: 0px 40px;
+}
+.mainNav{
+    display: flex;
+    margin: auto;
 }

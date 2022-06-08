@@ -1,5 +1,4 @@
 
-
 .heroDiv{
     width: 100%;
     background-image: url('../../../public/images/heroImg.avif');
@@ -15,9 +14,11 @@
     margin: auto;
         color: black;
         font-family: 'Fira Code', monospace;
-        font-family: cursive;
         font-size: 35px;
         text-decoration: none;
+}
+.quoteCursive{
+    font-family: cursive;
 }
 .search {
     display: flex;
