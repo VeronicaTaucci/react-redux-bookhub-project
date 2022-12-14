@@ -37,7 +37,10 @@ const RecordAboutBook = ({bookTitle}) => {
         // console.log("bookRecord in component",bookRecord)
         dispatch(addRecordAboutBook(bookRecord))
 }
-
+const handleChange = (e) => {
+    setAddComment(e.target.value)
+    e.target.value=''
+}
     return(
         <>
             {/* rating  */}
@@ -58,7 +61,7 @@ const RecordAboutBook = ({bookTitle}) => {
                         </button>
                     );
                 })}
-                <div>Pages Read {pageRead}<Button className="count" variant="outline-dark" onClick={() => setPageRead(pageRead + 1)}>+</Button></div>
+                <div>Pages Read {pageRead}<Button className="count " variant="outline-dark" onClick={() => setPageRead(pageRead + 1)}>+</Button></div>
             </div>
 
             {/* comment  */}
@@ -66,8 +69,8 @@ const RecordAboutBook = ({bookTitle}) => {
             <div className="form-item">
                 <input className="comment"
                     placeholder="add a thought"
-                    value={addComment}
-                    onChange={(e) => setAddComment(e.target.value)}
+                    // value={addComment}
+                    onChange={handleChange}
                 />
             </div>
             <div className="comment-add-button">

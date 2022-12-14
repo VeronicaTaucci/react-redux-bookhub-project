@@ -70,8 +70,12 @@ const DisplayRecords = (book) => {
             comment: comment,
         }
         dispatch(records(recordsData))
+        setComment('')
     }
-    
+    const handleChange = (e) => {
+        setComment(e.target.value)
+        
+    }
 return (
     <>
         <Button variant="outline-dark" onClick={handleShow}>
@@ -98,11 +102,12 @@ return (
                                 );
                             })}
                         </div>
-                    <ListGroup.Item>Pages read:{count}<Button className="count" variant="outline-dark" onClick={() => setCount(count + 1)}>ADD</Button></ListGroup.Item>
+                    <ListGroup.Item>Pages read: {count} <Button className="count" variant="outline-dark" onClick={() => setCount(count + 1)}>ADD</Button></ListGroup.Item>
                     <div className="category-container-parent">
                         <div className="category">
                             <div
                                 className="category-dropdown"
+                            
                                 onClick={() => setCategoryOpen(!categoryOpen)}
                             >
                                 <label>{category ? category.title : "Category"}</label>
@@ -126,8 +131,8 @@ return (
                         <div className="form-item">
                             <input className="comment"
                                 placeholder="add a thought"
-                                value={comment}
-                                onChange={(e) => setComment(e.target.value)}
+                                value={comment} 
+                                onChange={handleChange}
                             />
                         </div>
                       

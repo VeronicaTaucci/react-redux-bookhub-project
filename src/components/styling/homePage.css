@@ -76,3 +76,14 @@
     flex-direction: column;
 
 }
+
+.category-dropdown{
+    width: 300px;
+  }
+.categoryItem{
+    width: 300px;
+  }
+.count{
+    display: flex;
+    justify-content: end;
+}

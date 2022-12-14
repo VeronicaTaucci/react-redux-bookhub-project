@@ -6,6 +6,8 @@ import { addToList } from '../actions/addToList'
 import './styling/homePage.css';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const API_KEY = process.env.REACT_APP_BOOK_API_KEY;
 const Home = () => {
 
@@ -14,7 +16,17 @@ const Home = () => {
     const [randomQuote, setRandomQuote] = useState('')
     const [hideDiv, setHidediv] = useState(true);
     const dispatch = useDispatch();
-
+    const notify = (message) => toast.success(message, {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });;
+    
     
     const searchResults = e => {
          setSearchInput(e.target.value);   
@@ -42,6 +54,7 @@ const Home = () => {
         } catch (err) {
             console.log("err", err)
         }
+        setSearchInput('')
 } 
 
     useEffect(() => {
@@ -67,19 +80,23 @@ const Home = () => {
             return bookPic
     }
 }
+const addToCollection = (book) => {
+    dispatch(addToList(book)) 
+    notify('Nice choice! book was moved to your collection!')
+}
     return (
     
     <>
+        <ToastContainer />
             <div className='heroDiv'>
                 <h1 className='quote'>quote of the day:<span className='quoteCursive'>"{randomQuote}"</span> </h1>
             <div className="search">
-                <input onChange={searchResults} type="text" className="searchTerm" placeholder="Search a book" />
+                <input onChange={searchResults} value={searchInput} type="text" className="searchTerm" placeholder="Search a book" />
                 <button onClick={handleInput} type="submit" className="searchButton">
                     <i className="fa fa-search"></i>
                 </button>
             </div>
         </div>
-       
         <Header/>
         <div className='searchResults'>
             {!hideDiv ? <h1>Hmm..no results, try searching for something else!</h1> : null}
@@ -90,7 +107,7 @@ const Home = () => {
                     <Card.Title>{book.volumeInfo.title}</Card.Title>
                     <div className='infoButtons'>
                     <InfoModal book={book}><Button >Add To List</Button></InfoModal>
-                    <Button onClick={() => dispatch(addToList(book))} variant="outline-dark">Add To My Collection</Button>
+                    <Button onClick={() => addToCollection(book)} variant="outline-dark">Add To My Collection</Button>
                     </div>
                 </Card>)) 
             }
